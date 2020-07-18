@@ -1,0 +1,68 @@
+body{
+    background-color: rgb(228, 200, 159);
+    color:rgb(82, 64, 30);;
+}
+#library{
+    background-color: rgb(255, 235, 205);
+    border: 4px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+}
+.book-shelf{
+    display: flex;
+    flex-direction: row;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+form label{
+    display: inline-block;
+    width: 75px;
+}
+.book{
+    flex: 1;
+    border: 2px solid black;
+    background-color: rgb(221, 195, 156);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 2px;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0px 0px 3px 0px #000;
+    
+}
+.book:hover{
+    background-color: rgb(210, 173, 114);
+    box-shadow: 0px 0px 10px 0px #000;
+}
+.title{
+    color: rgb(147, 129, 103);
+}
+.author {
+    color: rgb(96, 88, 76);
+}
+.pages{
+
+}
+button{
+    background-color: rgb(200, 156, 87);
+    border: 1px solid rgb(210, 173, 114);
+    border-radius: 4px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    color: rgb(121, 86, 31);
+}
+button:hover{
+    background-color: #af2424;
+    color: #df9b80;
+}
+#add{
+    background-color: #d99b3c;
+}
+#add:hover{
+    background-color: #ae761f;
+    color: rgb(121, 86, 31);
+}
