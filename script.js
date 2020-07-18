@@ -2,6 +2,7 @@ let body = document.querySelector("body");
 
 
 let myLibrary = [
+    //Some books to add at the beggining
     new Book("It", "Stephen King", 1116, true),
     new Book("Pimp: The Story of My Life ", "Iceberg Slim", 311, true),
     new Book("The Hobbit", "J.R.R. Tolkien", 366, true),
@@ -9,6 +10,7 @@ let myLibrary = [
 ];
 
 function Book(title, author, pages, read = false) {
+    //book constructor
     this.title = title;
     this.author = author;
     this.pages = parseInt(pages);
@@ -17,28 +19,44 @@ function Book(title, author, pages, read = false) {
 
 // Book.prototype.addBookToLibrary = 
 document.querySelector('form').addEventListener('submit', (e) => {
+    // Using the form tag to store the data when adding a new book
+    event.preventDefault();
+
     const formData = new FormData(e.target);
     let read = false;
+    let valid = true;
+    let validationRegex = /^\s*$/g;
     let properties = []
     formData.forEach(entry => {
-        properties.push(entry)
+        if(entry.match(validationRegex)){
+            //Check if it is valid to add the book
+            //If not an alert will pop up
+            valid = false;
+        }
+        properties.push(entry);
+        
     });
-
+    if(!valid){
+        alert("Please enter all the values");
+        return;
+    } 
     read = properties[properties.length-1] == "on";
     if(read){
+        //on is the default value for checkboxes
+        //if it exists it will be added to the property array
+        //as the boolean value "true"
         properties.pop();
         properties.push(read);
     }
-
-    myLibrary.push(new Book(...properties));
+    myLibrary.push(new Book(...properties));//Adding new book to the library using spread operator
     addBookToLibrary();
-    e.target.reset();
-    event.preventDefault();
+    e.target.reset();// Empty the form
 
 });
 
 
 function addBookToLibrary(){
+    //Turn all books to html
     let libraryDiv = document.querySelector('#library');
     libraryDiv.textContent = "";
     let bookShelf = document.createElement('div');
@@ -49,6 +67,8 @@ function addBookToLibrary(){
     myLibrary.forEach(book => {
         
         if (newRow == 4){
+            //every 4 entries there is gonna be a new row
+            //as to not make a crowded front-end
             bookShelf = document.createElement('div');
             bookShelf.classList.add('book-shelf');
             libraryDiv.appendChild(bookShelf);
@@ -94,7 +114,3 @@ function addBookToLibrary(){
 // addBookToLibrary.prototype = Object.create(Book.property);
 
 body.addEventListener('load', addBookToLibrary());
-
-function render() {
-
-}

@@ -22,6 +22,9 @@ form label{
     display: inline-block;
     width: 75px;
 }
+form > div {
+    margin: 5px 0;
+}
 .book{
     flex: 1;
     border: 2px solid black;
@@ -42,6 +45,12 @@ form label{
 }
 .author {
     color: rgb(96, 88, 76);
+}
+input{
+    color: white;
+    background-color: #ae761f;
+    border: 2px solid #d4a962;
+    border-radius: 4px;
 }
 .pages{
 
